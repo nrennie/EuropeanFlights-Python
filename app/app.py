@@ -5,7 +5,7 @@ from mizani.breaks import date_breaks
 from mizani.formatters import date_format
 
 # read in data
-flights = pd.read_csv('flights_data.csv')  
+flights = pd.read_csv('https://raw.githubusercontent.com/nrennie/EuropeanFlights-Python/main/app/flights_data.csv')  
 
 # Function for UI
 def create_ui(data: pd.DataFrame):
