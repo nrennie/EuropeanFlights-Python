@@ -1,16 +1,15 @@
 import plotnine as gg
 import pandas as pd
-import pyodide.http
-from shiny import ui, render, App
+from pyodide.http import open_url
+from shiny import ui, render, App, reactive
 from mizani.breaks import date_breaks
 from mizani.formatters import date_format
 
 # read in data
-# flights = pd.read_csv('https://raw.githubusercontent.com/nrennie/EuropeanFlights-Python/main/app/flights_data.csv')  
-flights = await pyodide.http.pyfetch('https://raw.githubusercontent.com/nrennie/EuropeanFlights-Python/main/app/flights_data.csv')
+flights = pd.read_csv(open_url('https://raw.githubusercontent.com/nrennie/EuropeanFlights-Python/main/app/flights_data.csv'))
 
 # Function for UI
-def create_ui(data: pd.DataFrame):
+def create_ui():
   # create our ui object
   app_ui = ui.page_fluid(
     ui.panel_title("European Flights"),
@@ -47,7 +46,7 @@ def create_ui(data: pd.DataFrame):
   )
   return app_ui
 
-ui_obj = create_ui(flights)
+ui_obj = create_ui()
 
 # Function to make the plot
 def create_plot(data):
