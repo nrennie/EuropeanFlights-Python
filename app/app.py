@@ -1,7 +1,7 @@
 import plotnine as gg
 import pandas as pd
 from pyodide.http import open_url
-from shiny import ui, render, App, reactive
+from shiny import *
 from mizani.breaks import date_breaks
 from mizani.formatters import date_format
 
@@ -69,6 +69,7 @@ def create_server(data):
     @output(id = "barplot")
     @render.plot
     def plot():
+      req(input.country())
       country = list(input.country())
       new_data = data[data['Country'].isin(country)]
       plot = create_plot(new_data)
