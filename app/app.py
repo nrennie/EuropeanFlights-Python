@@ -69,7 +69,7 @@ def create_plot(data):
       gg.theme_minimal() +
       gg.labs(x = "", y = "Total number of flights per week", title="Total number of flights per week") +
       gg.scale_x_datetime(breaks=date_breaks('1 years'), labels=date_format('%Y')) +
-      gg.scale_fill_brewer(type="qual", palette = "Dark2") +
+      gg.scale_fill_manual(values = {'Belgium':'#F2C57C', 'France':'#DDAE7E', 'Ireland':'#7FB685', 'Luxembourg':'#426A5A', 'Netherlands':'#EF6F6C', 'United Kingdom':'#AC9FBB'}) +
       gg.theme(panel_grid_major_x = gg.element_blank(),
                panel_grid_minor_x = gg.element_blank())
   )
