@@ -12,15 +12,28 @@ flights = pd.read_csv(open_url('https://raw.githubusercontent.com/nrennie/Europe
 def create_ui():
   # create our ui object
   app_ui = ui.page_fluid(
+    
+    # Add CSS styling
+    ui.tags.head(
+      ui.tags.style(
+        ui.HTML(
+          "@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap'); body { color: #505050; font-family: 'Roboto', sans-serif; padding-left: 20px; padding-right: 20px; } h2 { font-family: 'Roboto', sans-serif; color: #black; }"
+      )
+      )
+    ),
+    
+    # App title ----
     ui.panel_title("European Flights"),
-      ui.markdown(
-          """
-          The number of flights arriving or leaving from European airports saw a dramatic decrease with the onset of the Covid-19 pandemic in March 2020. Amsterdam - Schipol remains the busiest airport, averaging 1,150 flights per day since January 2016.
-          
-          Data: [Eurocontrol](https://ansperformance.eu/data/)
-  
-          """
-      ),
+    
+    # Subtitle
+    ui.markdown(
+        """
+        The number of flights arriving or leaving from European airports saw a dramatic decrease with the onset of the Covid-19 pandemic in March 2020. Amsterdam - Schipol remains the busiest airport, averaging 1,150 flights per day since January 2016.
+        
+        Data: [Eurocontrol](https://ansperformance.eu/data/)
+
+        """
+    ),
     ui.row(
         # bar chart output
         ui.column(10,
