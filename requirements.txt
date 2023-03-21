@@ -1,6 +1,5 @@
 mizani==0.8.1
 pandas==1.4.2
 plotnine==0.10.1
-pyodide==0.0.2
 shiny==0.2.9
 shinylive==0.0.2
